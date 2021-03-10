@@ -7,8 +7,66 @@
     <title>TOP Todo List</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/1a7b933d6d.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <header id="header">
+      <h1 class="headerTitle">TOP Todo List</h1>
+    </header>
+    <main id="todoContainer">
+      <div id="projectContainer">
+        <div class="projectHeader">
+          <h2 class="projectListTitle">Projects</h2>
+          <button id="newProjectButton">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div id="projectList">
+          <div id="project">
+            <h2 id="projectTitle">Sample Project</h2>
+          </div>
+          <div id="project">
+            <h2 id="projectTitle">Sample Project</h2>
+          </div>
+          <div id="project">
+            <h2 id="projectTitle">Sample Project</h2>
+          </div>
+        </div>
+      </div>
+
+      <div id="taskContainer">
+        <div class="taskHeader">
+          <h2 id="taskProjectTitle">Sample Project</h2>
+          <div class="projectButtons">
+            <button id="addTask"><i class="fas fa-plus-circle"></i></button>
+            <button id="deleteProject"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
+        <div id="taskList">
+          <div id="task">
+            <h3 id="taskName">Sample Task</h3>
+            <h3 id="taskPrority">Priority: <span id="priorty">High</span></h3>
+            <h3 id="taskDueDate">03/19/21</h3>
+            <div class="taskButtons">
+              <button id="editTask"><i class="fas fa-edit"></i></button>
+              <button id="deleteTask"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div id="task">
+            <h3 id="taskName">Sample Task</h3>
+            <h3 id="taskPrority">Priority: <span id="priorty">High</span></h3>
+            <h3 id="taskDueDate">03/19/21</h3>
+            <div class="taskButtons">
+              <button id="editTask"><i class="fas fa-edit"></i></button>
+              <button id="deleteTask"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>
