@@ -3,3 +3,129 @@
 *::after {
   box-sizing: border-box;
 }
+
+body {
+  height: 100vh;
+  background-color: #aaa;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/*** HEADER ***/
+
+#header {
+  height: 4em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 0.15em solid #191919;
+}
+
+.headerTitle {
+  margin-left: 1em;
+  font-size: 2em;
+}
+
+/*** TODO CONTAINER ***/
+
+#todoContainer {
+  flex: 1;
+  display: flex;
+}
+
+/*** PROJECT CONTAINER ***/
+
+#projectContainer {
+  min-width: 22em;
+  background-color: #bbb;
+  border-right: 0.15em solid #191919;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectHeader {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  width: 18em;
+}
+
+.projectListTitle {
+  font-size: 2em;
+}
+
+#newProjectButton {
+  font-size: 2em;
+}
+
+#projectList {
+  width: 18em;
+  word-break: break-all;
+}
+
+/*** PROJECT ***/
+
+#project {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+  padding: 0.3em 0.6em;
+}
+
+#project:hover {
+  background-color: #aaa;
+}
+
+#projectTitle {
+  font-size: 1.5em;
+}
+
+/*** TASK CONTAINER ***/
+
+#taskContainer {
+  flex: 1;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taskHeader {
+  display: flex;
+  width: 60em;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+  border-bottom: 0.2em solid #191919;
+  padding-bottom: 0.3em;
+}
+
+#taskProjectTitle {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.taskHeader button {
+  font-size: 2em;
+  margin-left: 0.25em;
+}
+
+#taskList {
+  margin-top: 2em;
+  display: flex;
+  flex: column;
+  flex-direction: column;
+}
+
+/*** TASK ***/
+
+#task {
+  width: 50em;
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
