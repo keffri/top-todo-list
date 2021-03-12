@@ -1,3 +1,5 @@
+import projectLogic from "./projectCreate";
+
 const projectDOM = (() => {
   function projectBox() {
     const content = document.getElementById("content");
@@ -32,6 +34,29 @@ const projectDOM = (() => {
     }
 
     closeButton.addEventListener("click", removeProjectBox);
+
+    createProject.addEventListener("click", () => {
+      createProjectDOM();
+      removeProjectBox();
+    });
+  }
+
+  function createProjectDOM() {
+    const projectList = document.getElementById("projectList");
+    projectList.setAttribute("id", "projectList");
+
+    let project = projectLogic.createProject();
+
+    const projectContainer = document.createElement("div");
+    projectContainer.setAttribute("id", "project");
+
+    let projectTitle = document.createElement("h2");
+    projectTitle.setAttribute("id", "projectTitle");
+    projectTitle.textContent = project.projectName;
+
+    projectContainer.appendChild(projectTitle);
+
+    projectList.appendChild(projectContainer);
   }
 
   return { projectBox };
