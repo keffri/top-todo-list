@@ -1,4 +1,5 @@
 import projectLogic from "./projectCreate";
+import taskDOM from "./taskDOM";
 
 const projectDOM = (() => {
   function projectBox() {
@@ -19,36 +20,41 @@ const projectDOM = (() => {
     createProject.setAttribute("id", "createProject");
     createProject.textContent = "Create Project";
 
-    const closeButton = document.createElement("button");
-    closeButton.setAttribute("id", "closeButton");
-    closeButton.textContent = "X";
+    const closeProjectBox = document.createElement("button");
+    closeProjectBox.setAttribute("id", "closeProjectBox");
+    closeProjectBox.textContent = "X";
 
     content.appendChild(boxContainer);
     boxContainer.appendChild(newProjectBox);
     newProjectBox.appendChild(projectInput);
     newProjectBox.appendChild(createProject);
-    newProjectBox.appendChild(closeButton);
+    newProjectBox.appendChild(closeProjectBox);
 
     function removeProjectBox() {
       document.getElementById("boxContainer").remove();
     }
 
-    closeButton.addEventListener("click", removeProjectBox);
+    closeProjectBox.addEventListener("click", removeProjectBox);
 
     createProject.addEventListener("click", () => {
-      createProjectDOM();
+      let project = projectLogic.createProject();
+      let projectIndex = project.projectIndex;
+      taskDOM.createTaskContainer(projectIndex);
+      createProjectDOM(project);
       removeProjectBox();
     });
   }
 
-  function createProjectDOM() {
+  function createProjectDOM(project) {
     const projectList = document.getElementById("projectList");
     projectList.setAttribute("id", "projectList");
 
-    let project = projectLogic.createProject();
-
     const projectContainer = document.createElement("div");
     projectContainer.setAttribute("id", "project");
+
+    projectContainer.addEventListener("click", () => {
+      taskDOM.createTaskContainer(project.projectIndex);
+    });
 
     let projectTitle = document.createElement("h2");
     projectTitle.setAttribute("id", "projectTitle");

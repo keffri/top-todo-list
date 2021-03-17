@@ -14,7 +14,7 @@ const projectLogic = (() => {
     }
     let project = Project(projectName);
     projectList.push(project);
-    console.log(projectList);
+    project.projectIndex = projectList.indexOf(project);
     return project;
   }
 
