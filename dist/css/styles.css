@@ -145,7 +145,7 @@ body {
   width: 10em;
 }
 
-/*** BOXES ***/
+/*** PROJECT BOX ***/
 
 #boxContainer {
   position: absolute;
@@ -180,6 +180,34 @@ body {
   padding: 0.2em 0.6em;
 }
 
-#closeButton {
+#closeProjectBox {
   border: 0.1rem solid #191919;
+}
+
+/*** TASK BOX ***/
+
+#newTaskBox {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  border-radius: 1em;
+  border: 0.2em solid #191919;
+  position: absolute;
+  background-color: #ccc;
+  width: 20em;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.taskBoxButtonContainer {
+  display: flex;
+}
+
+.taskBoxButtonContainer button {
+  margin: 0 2em;
+  padding: 0.2em 0.6em;
+  border: 0.1em solid #191919;
 }
