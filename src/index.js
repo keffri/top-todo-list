@@ -3,7 +3,7 @@ import projectLogic from "./modules/projectCreate";
 
 const todoListTitle = document.querySelector(".headerTitle");
 todoListTitle.addEventListener("click", () => {
-  console.log(projectLogic.projectList);
+  console.table(projectLogic.projectList);
 });
 
 const newProjectButton = document.getElementById("newProjectButton");
