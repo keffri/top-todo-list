@@ -38,14 +38,16 @@ const projectDOM = (() => {
 
     createProject.addEventListener("click", () => {
       let project = projectLogic.createProject();
-      let projectIndex = project.projectIndex;
-      taskDOM.createTaskContainer(projectIndex);
-      createProjectDOM(project);
+      let createTaskDiv = function () {
+        taskDOM.createTaskContainer(project);
+      };
+      createTaskDiv();
+      createProjectDOM(project, createTaskDiv);
       removeProjectBox();
     });
   }
 
-  function createProjectDOM(project) {
+  function createProjectDOM(project, createTaskDiv) {
     const projectList = document.getElementById("projectList");
     projectList.setAttribute("id", "projectList");
 
@@ -53,19 +55,37 @@ const projectDOM = (() => {
     projectContainer.setAttribute("id", "project");
 
     projectContainer.addEventListener("click", () => {
-      taskDOM.createTaskContainer(project.projectIndex);
+      createTaskDiv();
     });
 
     let projectTitle = document.createElement("h2");
     projectTitle.setAttribute("id", "projectTitle");
     projectTitle.textContent = project.projectName;
 
+    const deleteProjectButton = document.createElement("button");
+    deleteProjectButton.setAttribute("id", "deleteProject");
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fas", "fa-trash-alt");
+
+    deleteProjectButton.addEventListener("click", () => {
+      projectDOM.deleteProjectDOM(project, projectContainer);
+    });
+
     projectContainer.appendChild(projectTitle);
+    projectContainer.appendChild(deleteProjectButton);
+    deleteProjectButton.appendChild(deleteIcon);
 
     projectList.appendChild(projectContainer);
   }
 
-  return { projectBox };
+  function deleteProjectDOM(project, projectContainer) {
+    projectContainer.remove();
+    const taskContainer = document.getElementById("taskContainer");
+    taskContainer.innerHTML = "";
+    projectLogic.deleteProject(project);
+  }
+
+  return { projectBox, deleteProjectDOM };
 })();
 
 export default projectDOM;

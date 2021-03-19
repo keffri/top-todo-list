@@ -57,9 +57,12 @@ const taskDOM = (() => {
     console.log("test");
   }
 
-  function createTaskContainer(projectIndex) {
+  function createTaskContainer(project) {
     const taskContainer = document.getElementById("taskContainer");
-    console.log(projectIndex);
+
+    if (taskContainer.innerHTML === "") {
+      return;
+    }
 
     taskContainer.innerHTML = "";
 
@@ -68,8 +71,7 @@ const taskDOM = (() => {
 
     const taskProjectTitle = document.createElement("h2");
     taskProjectTitle.setAttribute("id", "taskProjectTitle");
-    taskProjectTitle.textContent =
-      projectLogic.projectList[projectIndex].projectName;
+    taskProjectTitle.textContent = project.projectName;
 
     const projectButtons = document.createElement("div");
     projectButtons.setAttribute("class", "projectButtons");
@@ -81,11 +83,6 @@ const taskDOM = (() => {
 
     addTaskButton.addEventListener("click", taskDOM.taskBox);
 
-    const deleteProjectButton = document.createElement("button");
-    deleteProjectButton.setAttribute("id", "deleteProject");
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fas", "fa-trash-alt");
-
     const taskList = document.createElement("div");
     taskList.setAttribute("id", "taskList");
 
@@ -95,8 +92,6 @@ const taskDOM = (() => {
     taskHeader.appendChild(projectButtons);
     projectButtons.appendChild(addTaskButton);
     addTaskButton.appendChild(addIcon);
-    projectButtons.appendChild(deleteProjectButton);
-    deleteProjectButton.appendChild(deleteIcon);
   }
 
   return { createTaskContainer, taskBox };

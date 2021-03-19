@@ -18,7 +18,12 @@ const projectLogic = (() => {
     return project;
   }
 
-  return { createProject, projectList };
+  function deleteProject(project) {
+    let projectIndex = projectList.indexOf(project);
+    projectList.splice(projectIndex, 1);
+  }
+
+  return { createProject, projectList, deleteProject };
 })();
 
 export default projectLogic;
