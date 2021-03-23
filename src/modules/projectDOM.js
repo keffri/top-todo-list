@@ -49,18 +49,16 @@ const projectDOM = (() => {
 
   function createProjectDOM(project, createTaskDiv) {
     const projectList = document.getElementById("projectList");
-    projectList.setAttribute("id", "projectList");
 
     const projectContainer = document.createElement("div");
     projectContainer.setAttribute("id", "project");
 
-    projectContainer.addEventListener("click", () => {
-      createTaskDiv();
-    });
-
     let projectTitle = document.createElement("h2");
     projectTitle.setAttribute("id", "projectTitle");
     projectTitle.textContent = project.projectName;
+    projectTitle.addEventListener("click", () => {
+      createTaskDiv();
+    });
 
     const deleteProjectButton = document.createElement("button");
     deleteProjectButton.setAttribute("id", "deleteProject");
@@ -79,9 +77,9 @@ const projectDOM = (() => {
   }
 
   function deleteProjectDOM(project, projectContainer) {
-    projectContainer.remove();
     const taskContainer = document.getElementById("taskContainer");
     taskContainer.innerHTML = "";
+    projectContainer.remove();
     projectLogic.deleteProject(project);
   }
 
