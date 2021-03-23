@@ -1,7 +1,8 @@
 import projectLogic from "./projectCreate";
+import taskLogic from "./taskCreate";
 
 const taskDOM = (() => {
-  function taskBox() {
+  function taskBox(project) {
     const content = document.getElementById("content");
 
     const boxContainer = document.createElement("div");
@@ -35,6 +36,10 @@ const taskDOM = (() => {
     const createTaskButton = document.createElement("button");
     createTaskButton.setAttribute("id", "createTask");
     createTaskButton.textContent = "Create Task";
+    createTaskButton.addEventListener("click", () => {
+      let task = taskLogic.createTask(project);
+      taskDOM.createTaskDOM(task);
+    });
 
     const closeTaskBox = document.createElement("button");
     closeTaskBox.setAttribute("id", "closeTaskBox");
@@ -54,15 +59,14 @@ const taskDOM = (() => {
     }
 
     closeTaskBox.addEventListener("click", removeTaskBox);
-    console.log("test");
   }
 
   function createTaskContainer(project) {
     const taskContainer = document.getElementById("taskContainer");
 
-    if (taskContainer.innerHTML === "") {
-      return;
-    }
+    // if (taskContainer.innerHTML === "") {
+    //   return;
+    // }
 
     taskContainer.innerHTML = "";
 
@@ -81,20 +85,67 @@ const taskDOM = (() => {
     const addIcon = document.createElement("i");
     addIcon.classList.add("fas", "fa-plus-circle");
 
-    addTaskButton.addEventListener("click", taskDOM.taskBox);
+    addTaskButton.addEventListener("click", () => {
+      taskDOM.taskBox(project);
+    });
 
     const taskList = document.createElement("div");
     taskList.setAttribute("id", "taskList");
 
     taskContainer.appendChild(taskHeader);
-
+    taskContainer.appendChild(taskList);
     taskHeader.appendChild(taskProjectTitle);
     taskHeader.appendChild(projectButtons);
     projectButtons.appendChild(addTaskButton);
     addTaskButton.appendChild(addIcon);
   }
 
-  return { createTaskContainer, taskBox };
+  function createTaskDOM(task) {
+    const taskList = document.getElementById("taskList");
+
+    const taskContainer = document.createElement("div");
+    taskContainer.setAttribute("id", "task");
+
+    const taskName = document.createElement("h3");
+    taskName.setAttribute("id", "taskName");
+    taskName.textContent = task.taskName;
+
+    const taskPriority = document.createElement("h3");
+    taskPriority.setAttribute("id", "taskPriority");
+    taskPriority.textContent = task.taskPriority;
+
+    const taskDueDate = document.createElement("h3");
+    taskDueDate.setAttribute("id", "taskDueDate");
+    taskDueDate.textContent = task.taskDate;
+
+    const taskButtonsContainer = document.createElement("div");
+    taskButtonsContainer.setAttribute("id", "taskButtons");
+
+    const editTaskButton = document.createElement("button");
+    editTaskButton.setAttribute("id", "editTask");
+
+    const editTaskIcon = document.createElement("i");
+    editTaskIcon.classList.add("fas", "fa-edit");
+
+    const deleteTaskButton = document.createElement("button");
+    deleteTaskButton.setAttribute("id", "deleteTask");
+
+    const deleteTaskIcon = document.createElement("i");
+    deleteTaskIcon.classList.add("fas", "fa-trash-alt");
+
+    taskContainer.appendChild(taskName);
+    taskContainer.appendChild(taskPriority);
+    taskContainer.appendChild(taskDueDate);
+    taskContainer.appendChild(taskButtonsContainer);
+    taskButtonsContainer.appendChild(editTaskButton);
+    taskButtonsContainer.appendChild(deleteTaskButton);
+    editTaskButton.appendChild(editTaskIcon);
+    deleteTaskButton.appendChild(deleteTaskIcon);
+
+    taskList.appendChild(taskContainer);
+  }
+
+  return { createTaskContainer, taskBox, createTaskDOM };
 })();
 
 export default taskDOM;
