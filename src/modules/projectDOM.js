@@ -38,16 +38,18 @@ const projectDOM = (() => {
 
     createProject.addEventListener("click", () => {
       let project = projectLogic.createProject();
-      let createTaskDiv = function () {
-        taskDOM.createTaskContainer(project);
-      };
-      createTaskDiv();
-      createProjectDOM(project, createTaskDiv);
+      if (!project) {
+        return;
+      }
+
+      taskDOM.createTaskContainer(project);
+
+      createProjectDOM(project);
       removeProjectBox();
     });
   }
 
-  function createProjectDOM(project, createTaskDiv) {
+  function createProjectDOM(project) {
     const projectList = document.getElementById("projectList");
 
     const projectContainer = document.createElement("div");
@@ -57,7 +59,8 @@ const projectDOM = (() => {
     projectTitle.setAttribute("id", "projectTitle");
     projectTitle.textContent = project.projectName;
     projectTitle.addEventListener("click", () => {
-      createTaskDiv();
+      taskDOM.createTaskContainer(project);
+      taskDOM.createTasks(project);
     });
 
     const deleteProjectButton = document.createElement("button");

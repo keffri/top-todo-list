@@ -38,7 +38,8 @@ const taskDOM = (() => {
     createTaskButton.textContent = "Create Task";
     createTaskButton.addEventListener("click", () => {
       let task = taskLogic.createTask(project);
-      taskDOM.createTaskDOM(task);
+      taskDOM.createTaskDOM(project, task);
+      removeTaskBox();
     });
 
     const closeTaskBox = document.createElement("button");
@@ -100,7 +101,14 @@ const taskDOM = (() => {
     addTaskButton.appendChild(addIcon);
   }
 
-  function createTaskDOM(task) {
+  function createTasks(project) {
+    for (let i = 0; i < project.taskList.length; i++) {
+      let task = project.taskList[i];
+      taskDOM.createTaskDOM(project, task);
+    }
+  }
+
+  function createTaskDOM(project, task) {
     const taskList = document.getElementById("taskList");
 
     const taskContainer = document.createElement("div");
@@ -130,6 +138,10 @@ const taskDOM = (() => {
     const deleteTaskButton = document.createElement("button");
     deleteTaskButton.setAttribute("id", "deleteTask");
 
+    deleteTaskButton.addEventListener("click", () => {
+      taskDOM.deleteTaskDOM(project, taskContainer, task);
+    });
+
     const deleteTaskIcon = document.createElement("i");
     deleteTaskIcon.classList.add("fas", "fa-trash-alt");
 
@@ -145,7 +157,18 @@ const taskDOM = (() => {
     taskList.appendChild(taskContainer);
   }
 
-  return { createTaskContainer, taskBox, createTaskDOM };
+  function deleteTaskDOM(project, taskContainer, task) {
+    taskContainer.remove();
+    taskLogic.deleteTask(project, task);
+  }
+
+  return {
+    createTaskContainer,
+    taskBox,
+    createTaskDOM,
+    createTasks,
+    deleteTaskDOM,
+  };
 })();
 
 export default taskDOM;

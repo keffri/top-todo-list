@@ -10,11 +10,17 @@ const taskLogic = (() => {
     let taskDate = document.getElementById("dueDate").value;
     let task = Task(taskName, taskPriority, taskDate);
     project.taskList.push(task);
+    task.taskIndex = project.taskList.indexOf(task);
 
     return task;
   }
 
-  return { createTask };
+  function deleteTask(project, task) {
+    let taskIndex = project.taskList.indexOf(task);
+    project.taskList.splice(taskIndex, 1);
+  }
+
+  return { createTask, deleteTask };
 })();
 
 export default taskLogic;
