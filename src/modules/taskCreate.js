@@ -20,7 +20,15 @@ const taskLogic = (() => {
     project.taskList.splice(taskIndex, 1);
   }
 
-  return { createTask, deleteTask };
+  function editTask(task, taskInput, taskPriorities, taskDue) {
+    task.taskName = taskInput;
+    task.taskPriority = taskPriorities;
+    task.taskDate = taskDue;
+    console.log(task);
+    return task;
+  }
+
+  return { createTask, deleteTask, editTask };
 })();
 
 export default taskLogic;
