@@ -55,13 +55,16 @@ const projectDOM = (() => {
     const projectContainer = document.createElement("div");
     projectContainer.setAttribute("id", "project");
 
-    let projectTitle = document.createElement("h2");
-    projectTitle.setAttribute("id", "projectTitle");
-    projectTitle.textContent = project.projectName;
-    projectTitle.addEventListener("click", () => {
+    const listenerContainer = document.createElement("div");
+    listenerContainer.setAttribute("id", "listenerContainer");
+    listenerContainer.addEventListener("click", () => {
       taskDOM.createTaskContainer(project);
       taskDOM.createTasks(project);
     });
+
+    let projectTitle = document.createElement("h2");
+    projectTitle.setAttribute("id", "projectTitle");
+    projectTitle.textContent = project.projectName;
 
     const deleteProjectButton = document.createElement("button");
     deleteProjectButton.setAttribute("id", "deleteProject");
@@ -72,7 +75,8 @@ const projectDOM = (() => {
       projectDOM.deleteProjectDOM(project, projectContainer);
     });
 
-    projectContainer.appendChild(projectTitle);
+    projectContainer.appendChild(listenerContainer);
+    listenerContainer.appendChild(projectTitle);
     projectContainer.appendChild(deleteProjectButton);
     deleteProjectButton.appendChild(deleteIcon);
 
