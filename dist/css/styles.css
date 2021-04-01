@@ -57,7 +57,7 @@ body {
   align-items: center;
 }
 
-#listenerContainer {
+#projectListenerContainer {
   background-color: #aaa;
   flex: 1;
   cursor: pointer;
@@ -111,6 +111,16 @@ body {
   align-items: center;
 }
 
+#taskListenerContainer {
+  cursor: pointer;
+  background-color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding-right: 3em;
+}
+
 .taskHeader {
   display: flex;
   min-width: 60em;
@@ -146,7 +156,7 @@ body {
   display: flex;
   justify-content: space-between;
   background-color: #aaa;
-  padding: 0.5em 1em;
+  padding: 0.2em 0.5em;
   font-size: 1.2em;
 }
 
