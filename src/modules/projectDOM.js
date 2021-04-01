@@ -55,9 +55,9 @@ const projectDOM = (() => {
     const projectContainer = document.createElement("div");
     projectContainer.setAttribute("id", "project");
 
-    const listenerContainer = document.createElement("div");
-    listenerContainer.setAttribute("id", "listenerContainer");
-    listenerContainer.addEventListener("click", () => {
+    const projectListenerContainer = document.createElement("div");
+    projectListenerContainer.setAttribute("id", "projectListenerContainer");
+    projectListenerContainer.addEventListener("click", () => {
       taskDOM.createTaskContainer(project);
       taskDOM.createTasks(project);
     });
@@ -75,8 +75,8 @@ const projectDOM = (() => {
       projectDOM.deleteProjectDOM(project, projectContainer);
     });
 
-    projectContainer.appendChild(listenerContainer);
-    listenerContainer.appendChild(projectTitle);
+    projectContainer.appendChild(projectListenerContainer);
+    projectListenerContainer.appendChild(projectTitle);
     projectContainer.appendChild(deleteProjectButton);
     deleteProjectButton.appendChild(deleteIcon);
 
