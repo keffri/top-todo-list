@@ -114,6 +114,9 @@ const taskDOM = (() => {
     const taskContainer = document.createElement("div");
     taskContainer.setAttribute("id", "task");
 
+    const taskListenerContainer = document.createElement("div");
+    taskListenerContainer.setAttribute("id", "taskListenerContainer");
+
     const taskName = document.createElement("h3");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task.taskName;
@@ -149,9 +152,10 @@ const taskDOM = (() => {
     const deleteTaskIcon = document.createElement("i");
     deleteTaskIcon.classList.add("fas", "fa-trash-alt");
 
-    taskContainer.appendChild(taskName);
-    taskContainer.appendChild(taskPriority);
-    taskContainer.appendChild(taskDueDate);
+    taskContainer.appendChild(taskListenerContainer);
+    taskListenerContainer.appendChild(taskName);
+    taskListenerContainer.appendChild(taskPriority);
+    taskListenerContainer.appendChild(taskDueDate);
     taskContainer.appendChild(taskButtonsContainer);
     taskButtonsContainer.appendChild(editTaskButton);
     taskButtonsContainer.appendChild(deleteTaskButton);
@@ -240,6 +244,9 @@ const taskDOM = (() => {
 
     taskContainer.innerHTML = "";
 
+    const taskListenerContainer = document.createElement("div");
+    taskListenerContainer.setAttribute("id", "taskListenerContainer");
+
     const taskName = document.createElement("h3");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task.taskName;
@@ -275,9 +282,10 @@ const taskDOM = (() => {
     const deleteTaskIcon = document.createElement("i");
     deleteTaskIcon.classList.add("fas", "fa-trash-alt");
 
-    taskContainer.appendChild(taskName);
-    taskContainer.appendChild(taskPriority);
-    taskContainer.appendChild(taskDueDate);
+    taskContainer.appendChild(taskListenerContainer);
+    taskListenerContainer.appendChild(taskName);
+    taskListenerContainer.appendChild(taskPriority);
+    taskListenerContainer.appendChild(taskDueDate);
     taskContainer.appendChild(taskButtonsContainer);
     taskButtonsContainer.appendChild(editTaskButton);
     taskButtonsContainer.appendChild(deleteTaskButton);
