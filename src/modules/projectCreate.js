@@ -8,7 +8,7 @@ const projectLogic = (() => {
 
   function createProject() {
     let projectName = document.getElementById("projectInput").value;
-    if (projectName === "" || projectName === null) {
+    if (!projectName) {
       alert("Please enter a project name.");
       return;
     }
