@@ -28,7 +28,19 @@ const taskLogic = (() => {
     return task;
   }
 
-  return { createTask, deleteTask, editTask };
+  function taskStatus(task, taskContainer, taskListenerContainer) {
+    if (task.taskComplete === false) {
+      task.taskComplete = true;
+      taskContainer.style.backgroundColor = "#ACCBA8";
+      taskListenerContainer.style.backgroundColor = "#ACCBA8";
+    } else if (task.taskComplete === true) {
+      task.taskComplete = false;
+      taskContainer.style.backgroundColor = "#aaa";
+      taskListenerContainer.style.backgroundColor = "#aaa";
+    }
+  }
+
+  return { createTask, deleteTask, editTask, taskStatus };
 })();
 
 export default taskLogic;

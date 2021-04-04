@@ -117,6 +117,10 @@ const taskDOM = (() => {
     const taskListenerContainer = document.createElement("div");
     taskListenerContainer.setAttribute("id", "taskListenerContainer");
 
+    taskListenerContainer.addEventListener("click", () => {
+      taskLogic.taskStatus(task, taskContainer, taskListenerContainer);
+    });
+
     const taskName = document.createElement("h3");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task.taskName;
@@ -246,6 +250,15 @@ const taskDOM = (() => {
 
     const taskListenerContainer = document.createElement("div");
     taskListenerContainer.setAttribute("id", "taskListenerContainer");
+
+    if (task.taskComplete === true) {
+      taskContainer.style.backgroundColor = "#ACCBA8";
+      taskListenerContainer.style.backgroundColor = "#ACCBA8";
+    }
+
+    taskListenerContainer.addEventListener("click", () => {
+      taskLogic.taskStatus(task, taskContainer, taskListenerContainer);
+    });
 
     const taskName = document.createElement("h3");
     taskName.setAttribute("id", "taskName");
